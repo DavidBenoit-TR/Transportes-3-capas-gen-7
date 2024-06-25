@@ -13,7 +13,7 @@ namespace VO
         private int camionId;
         private double distancia;
         private string fechaSalida;
-        private string fechaLlegadaEstima;
+        private string fechaLlegadaEstimada;
         private string fechaLlegadaReal;
         private int choferId;
         private int direccionOrigenId;
@@ -23,7 +23,7 @@ namespace VO
         public int CamionId { get => camionId; set => camionId = value; }
         public double Distancia { get => distancia; set => distancia = value; }
         public string FechaSalida { get => fechaSalida; set => fechaSalida = value; }
-        public string FechaLlegadaEstima { get => fechaLlegadaEstima; set => fechaLlegadaEstima = value; }
+        public string FechaLlegadaEstimada { get => fechaLlegadaEstimada; set => fechaLlegadaEstimada = value; }
         public string FechaLlegadaReal { get => fechaLlegadaReal; set => fechaLlegadaReal = value; }
         public int ChoferId { get => choferId; set => choferId = value; }
         public int DireccionOrigenId { get => direccionOrigenId; set => direccionOrigenId = value; }
@@ -35,7 +35,7 @@ namespace VO
             camionId = 0;
             distancia = 0;
             fechaSalida = "";
-            fechaLlegadaEstima = "";
+            fechaLlegadaEstimada = "";
             fechaLlegadaReal = "";
             choferId = 0;
             direccionOrigenId = 0;
@@ -48,7 +48,7 @@ namespace VO
             camionId = int.Parse(dr["camionId"].ToString());
             distancia = double.Parse(dr["distancia"].ToString());
             fechaSalida = DateTime.Parse(dr["fechaSalida"].ToString()).ToShortDateString();
-            fechaLlegadaEstima = DateTime.Parse(dr["fechaLlegadaEstima"].ToString()).ToShortDateString();
+            fechaLlegadaEstimada = DateTime.Parse(dr["fechaLlegadaEstimada"].ToString()).ToShortDateString();
             fechaLlegadaReal = DateTime.Parse(dr["fechaLlegadaReal"].ToString()).ToShortDateString();
             choferId = int.Parse(dr["choferId"].ToString());
             direccionOrigenId = int.Parse(dr["direccionOrigenId"].ToString());
