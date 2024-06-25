@@ -272,17 +272,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="BLL\BLL.csproj">
       <Project>{3391555a-d04d-488a-81da-cd8ec4f73124}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VO\VO.csproj">
+    <ProjectReference Include="VO\VO.csproj">
       <Project>{cfe7b345-e1fb-478e-9e80-f38180a2c2e5}</Project>
       <Name>VO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
