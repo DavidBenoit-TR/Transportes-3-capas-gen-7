@@ -14,6 +14,7 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Prueba de Git
             //recupero las variables de sesión
             string session_user = (string)Session["user"];
             string session_rol = (string)Session["rol"];
