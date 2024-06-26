@@ -25,7 +25,7 @@
                     <asp:BoundField DataField="Salida" HeaderText="Salida" ItemStyle-Width="50px" ReadOnly="true" />
                     <asp:BoundField DataField="Llegada_Estimada" HeaderText="LLegada Estimada" ItemStyle-Width="50px" ReadOnly="true" />
 
-                    <asp:ButtonField ButtonType="Button" HeaderText="Editar" CommandName="Select" ShowHeader="true" Text="Editar" ControlStyle-CssClass="btn btn-primary btn-xs" ItemStyle-Width="50px" />
+                    <asp:ButtonField ButtonType="Button" HeaderText="Editar" CommandName="Select" ShowHeader="true" Text="Editar" ControlStyle-CssClass="btn btn-primary btn-xs" ItemStyle-Width="50px"/>
 
 
                     <asp:CommandField ButtonType="Button" HeaderText="Eliminar" ShowDeleteButton="true" ShowHeader="true" ControlStyle-CssClass="btn btn-danger btn-xs" ItemStyle-Width="50px" />

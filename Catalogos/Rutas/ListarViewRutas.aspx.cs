@@ -23,6 +23,14 @@ namespace Transportes_3_capas_gen_7.Catalogos.Rutas
                 //puedo entrar
                 if (!IsPostBack)
                 {
+                    //Valido acciones por usuario
+                    if (session_rol != "Admin")
+                    {
+                        //Esto es un Operativo
+                        GV_Rutas.Enabled = false;
+                        Insertar.Enabled = false;
+                    }
+
                     cargargrid();
                 }
             }
