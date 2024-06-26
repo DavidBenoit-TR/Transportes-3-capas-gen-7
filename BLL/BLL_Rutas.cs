@@ -33,5 +33,12 @@ namespace BLL
         {
             return DAL_Rutas.EliminarRuta(id);
         }
+
+        #region ViewRutas
+        public static List<View_Rutas_VO> GetViewRutas(params object[] parametros)
+        {
+            return DAL_Rutas.GetViewRutas(parametros);
+        }
+        #endregion
     }
 }

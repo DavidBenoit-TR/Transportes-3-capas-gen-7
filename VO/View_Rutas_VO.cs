@@ -68,7 +68,7 @@ namespace VO
             idCamion = int.Parse(dr["idCamion"].ToString());
             camion = dr["camion"].ToString();
             salida = dr["salida"].ToString();
-            llegada_estimada = dr["llegada_estimada"].ToString();
+            llegada_estimada = dr["llegada estimada"].ToString();
         }
     }
 }

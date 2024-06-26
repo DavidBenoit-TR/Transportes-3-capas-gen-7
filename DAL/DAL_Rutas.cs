@@ -125,5 +125,25 @@ namespace DAL
             return salida;
         }
 
+        #region ViewRutas
+        public static List<View_Rutas_VO> GetViewRutas(params object[] parametros)
+        {
+            List<View_Rutas_VO> list_rutas = new List<View_Rutas_VO>();
+            try
+            {
+                DataSet ds_camiones = metodos_Datos.execute_DataSet("sp_View_Rutas", parametros);
+                foreach (DataRow dr in ds_camiones.Tables[0].Rows)
+                {
+                    list_rutas.Add(new View_Rutas_VO(dr));
+                }
+                return list_rutas;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
     }
 }
