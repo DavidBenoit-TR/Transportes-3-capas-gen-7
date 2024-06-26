@@ -51,6 +51,7 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Catalogos/Camiones/listarCamiones">Lista de Camiones</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Catalogos/Rutas/ListarViewRutas">Lista de Rutas</a></li>
+                        <li class="nav-item" id="Users" runat="server"><a class="nav-link" runat="server" href="~/Catalogos/Usuarios/ListarUsuarios">Lista de Usuarios</a></li>
                     </ul>
                     <%--User y Logout--%>
                     <div>

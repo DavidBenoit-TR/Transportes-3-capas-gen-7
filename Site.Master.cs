@@ -14,6 +14,7 @@ namespace Transportes_3_capas_gen_7
         {
             //recuperar la variable de Sesión
             var session = (string)Session["user"];
+            string var_rol = (string)Session["rol"];
             //si no existe la variable
             if (session == null)
             {
@@ -22,6 +23,11 @@ namespace Transportes_3_capas_gen_7
             }
             else
             {
+                if (var_rol != "Admin")
+                {
+                    Users.Visible = false;
+                }
+
                 usuario.Text = session;
                 //muestro el navbar
                 nav.Visible = true;
