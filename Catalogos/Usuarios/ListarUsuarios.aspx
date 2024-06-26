@@ -18,7 +18,6 @@
                 <Columns>
                     <asp:BoundField DataField="ID_User" HeaderText="# Usuario" ItemStyle-Width="50px" ReadOnly="true" />
                     <asp:BoundField DataField="Nickname" HeaderText="Nickname" ItemStyle-Width="50px" ReadOnly="true" />
-                    <asp:BoundField DataField="Pass" HeaderText="Pass" ItemStyle-Width="50px" ReadOnly="true" />
                     <asp:BoundField DataField="Estatus" HeaderText="Estatus" ItemStyle-Width="50px" ReadOnly="true" />
                     <asp:BoundField DataField="Rol" HeaderText="Rol" ItemStyle-Width="50px" ReadOnly="true" />
 

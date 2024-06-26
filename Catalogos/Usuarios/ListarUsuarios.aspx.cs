@@ -83,7 +83,7 @@ namespace Transportes_3_capas_gen_7.Catalogos.Usuarios
 
         protected void Insertar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("FormularioUsuario.aspx");
         }
     }
 }

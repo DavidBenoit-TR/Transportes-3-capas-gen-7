@@ -18,7 +18,7 @@ namespace DAL
 
             try
             {
-                respuesta = metodos_Datos.execute_NonQuery("sp_Useres_Ins",
+                respuesta = metodos_Datos.execute_NonQuery("sp_Users_Ins",
                     "@nickname", user.Nickname,
                     "@pass", user.Pass,
                     "@rol", user.Rol
