@@ -10,7 +10,7 @@ namespace BLL
 {
     public class BLL_Direcciones
     {
-        public static List<Direcciones_VO> get_Camiones(params object[] parametros)
+        public static List<Direcciones_VO> get_Direcciones(params object[] parametros)
         {
             return DAL_Direcciones.get_Direcciones(parametros);
         }

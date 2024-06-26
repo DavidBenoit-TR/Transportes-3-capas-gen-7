@@ -20,6 +20,7 @@ namespace BLL
         {
             return DAL_Camiones.get_Camiones(parametros);
         }
+
         //Update
         public static string actualizar_Camion(Camiones_VO camion)
         {

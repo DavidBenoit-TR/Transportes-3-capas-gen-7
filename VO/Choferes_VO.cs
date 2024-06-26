@@ -18,6 +18,7 @@ namespace VO
         private string _licencia;
         private string _urlFoto;
         private bool _disponibilidad;
+        private string nombreCompleto;
 
         public int IdChofer { get => _idChofer; set => _idChofer = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
@@ -28,6 +29,7 @@ namespace VO
         public string Licencia { get => _licencia; set => _licencia = value; }
         public string UrlFoto { get => _urlFoto; set => _urlFoto = value; }
         public bool Disponibilidad { get => _disponibilidad; set => _disponibilidad = value; }
+        public string NombreCompleto { get => nombreCompleto; set => nombreCompleto = value; }
 
         public Choferes_VO()
         {
@@ -40,7 +42,7 @@ namespace VO
             _licencia = "";
             _urlFoto = "";
             _disponibilidad = true;
-
+            nombreCompleto = "";
         }
 
         public Choferes_VO(DataRow dr)
@@ -54,7 +56,7 @@ namespace VO
             _licencia = dr["licencia"].ToString();
             _urlFoto = dr["urlFoto"].ToString();
             _disponibilidad = bool.Parse(dr["disponibilidad"].ToString());
-
+            nombreCompleto = dr["apellidoPaterno"].ToString() + " " + dr["apellidoMaterno"].ToString() + " " + dr["nombre"].ToString();
         }
     }
 }

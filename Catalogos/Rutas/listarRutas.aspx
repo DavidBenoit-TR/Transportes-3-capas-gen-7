@@ -11,7 +11,7 @@
                 runat="server"
                 CssClass="table table-bordered table-striped table-condensed"
                 AutoGenerateColumns="false"
-                DataKeyNames="idRuta"
+                DataKeyNames="IdRuta"
                 OnRowCommand="GVRutas_RowCommand"
                 OnRowDeleting="GVRutas_RowDeleting">
                 <Columns>
