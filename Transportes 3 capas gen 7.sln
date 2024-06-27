@@ -4,12 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transportes 3 capas gen 7", "Transportes 3 capas gen 7.csproj", "{78E5567D-D1FF-4FDC-99F6-697995C2EFD4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F84C5E4E-571B-4D65-93B2-B4AEA52C98D8} = {F84C5E4E-571B-4D65-93B2-B4AEA52C98D8}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{3391555A-D04D-488A-81DA-CD8EC4F73124}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{BE02C946-7931-47DB-A25B-E82C1A80CA3A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VO", "VO\VO.csproj", "{CFE7B345-E1FB-478E-9E80-F38180A2C2E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS_Transportes", "WS_Transportes\WS_Transportes.csproj", "{F84C5E4E-571B-4D65-93B2-B4AEA52C98D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{CFE7B345-E1FB-478E-9E80-F38180A2C2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFE7B345-E1FB-478E-9E80-F38180A2C2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFE7B345-E1FB-478E-9E80-F38180A2C2E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84C5E4E-571B-4D65-93B2-B4AEA52C98D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84C5E4E-571B-4D65-93B2-B4AEA52C98D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84C5E4E-571B-4D65-93B2-B4AEA52C98D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84C5E4E-571B-4D65-93B2-B4AEA52C98D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

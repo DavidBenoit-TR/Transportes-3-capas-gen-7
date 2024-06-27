@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Transportes_3_capas_gen_7.CamionesServiceReference;
 using Transportes_3_capas_gen_7.Utilidades;
 using VO;
 
@@ -12,8 +13,10 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
 {
     public partial class listarCamiones : System.Web.UI.Page
     {
+        CamionesServiceSoapClient client_WS;
         protected void Page_Load(object sender, EventArgs e)
         {
+            client_WS = new CamionesServiceSoapClient();
             //Prueba de Git
             //recupero las variables de sesión
             string session_user = (string)Session["user"];
@@ -48,7 +51,9 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
         public void CargarGrid()
         {
             //cargamos la información desde la BLL al GV
-            GVCamiones.DataSource = BLL_Camiones.get_Camiones();
+            //GVCamiones.DataSource = BLL_Camiones.get_Camiones();
+            //cargamos la información desde Servicio Web al GV
+            GVCamiones.DataSource = client_WS.get_Camiones(new ArrayOfAnyType { });
             //Mostramos los resultados renderizando la información
             GVCamiones.DataBind();
         }
@@ -74,8 +79,10 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
         {
             //recupero el ID del renglón efectao
             int idcamion = int.Parse(GVCamiones.DataKeys[e.RowIndex].Values["IdCamion"].ToString());
-            //Invoco mi método para eliminar camiones desde la BLL
-            string respuesta = BLL_Camiones.eliminar_Camion(idcamion);
+            ////Invoco mi método para eliminar camiones desde la BLL
+            //string respuesta = BLL_Camiones.eliminar_Camion(idcamion);
+            //Invoco mi método para eliminar camiones desde el servicio Web
+            string respuesta = client_WS.eliminar_Camion(idcamion);
             //Preparamos el Sweet Alert
             string titulo, msg, tipo;
             if (respuesta.ToUpper().Contains("ERROR"))
@@ -112,9 +119,9 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
             CheckBox chaux = (CheckBox)GVCamiones.Rows[e.RowIndex].FindControl("chkEditDisponible");
             bool disponibilidad = chaux.Checked;
             //Recupero el Objeto Original
-            Camiones_VO _camion = BLL_Camiones.get_Camiones("@idCamion", idcamion)[0];
+            CamionesServiceReference.Camiones_VO _camion = client_WS.get_Camiones(new ArrayOfAnyType { "@idCamion", idcamion })[0];
             //creo un nuevo objeto para enviar con los datos modificados
-            Camiones_VO _camionAux = new Camiones_VO();
+            CamionesServiceReference.Camiones_VO _camionAux = new CamionesServiceReference.Camiones_VO();
             //asignamos los valores que vamos a actualizar
             _camionAux.IdCamion = idcamion;
             _camionAux.Matricula = matricula;
@@ -134,7 +141,7 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
             try
             {
                 //invoco mi método de actualizar desde la capa BLL pasándole el nuevo objeto
-                respuesta = BLL_Camiones.actualizar_Camion(_camionAux);
+                respuesta = client_WS.actualizar_Camion(_camionAux);
                 //Configuración para el Sweet Alert
                 if (respuesta.ToUpper().Contains("ERROR"))
                 {

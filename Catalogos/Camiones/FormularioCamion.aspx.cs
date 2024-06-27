@@ -1,11 +1,11 @@
-﻿using BLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Transportes_3_capas_gen_7.CamionesServiceReference;
 using Transportes_3_capas_gen_7.Utilidades;
 using VO;
 
@@ -13,9 +13,10 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
 {
     public partial class FormularioCamion : System.Web.UI.Page
     {
+        CamionesServiceSoapClient client_WS;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            client_WS = new CamionesServiceSoapClient();
             //Valido si es PostBack
             if (!IsPostBack)
             {
@@ -36,7 +37,7 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
                     //Recupero el ID que proviene de la URL/petíción
                     int _id = Convert.ToInt32(Request.QueryString["Id"]);
                     //Obtener el Objeto original de la BD y colocar los valores en sus campos coreespondientes
-                    Camiones_VO _camion_original = BLL_Camiones.get_Camiones("@idCamion", _id)[0];
+                    CamionesServiceReference.Camiones_VO _camion_original = client_WS.get_Camiones(new ArrayOfAnyType { "@idCamion", _id })[0];
                     //valido que realmente obtenga un objeto, de lo contrario me regreso al lsitado
                     if (_camion_original.IdCamion != 0)
                     {
@@ -109,7 +110,7 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
             try
             {
                 //Creamos el objeto que enviaremos para actualiza o insertar
-                Camiones_VO _camion_aux = new Camiones_VO();
+                CamionesServiceReference.Camiones_VO _camion_aux = new CamionesServiceReference.Camiones_VO();
                 _camion_aux.Matricula = txtmatricula.Text;
                 _camion_aux.TipoCamion = txttipo_camion.Text;
                 _camion_aux.Marca = txtmarca.Text;
@@ -119,7 +120,7 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
                 _camion_aux.UrlFoto = imgcamion.ImageUrl;
                 _camion_aux.Disponibilidad = chkdisponibilidad.Checked;
 
-                Camiones_VO _camion_aux2 = new Camiones_VO()
+                CamionesServiceReference.Camiones_VO _camion_aux2 = new CamionesServiceReference.Camiones_VO()
                 {
                     Matricula = txtmatricula.Text,
                     TipoCamion = txttipo_camion.Text,
@@ -136,13 +137,13 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
                 {
                     //Insertar
                     _camion_aux.Disponibilidad = true;
-                    salida = BLL_Camiones.insertar_Camion(_camion_aux);
+                    salida = client_WS.insertar_Camion(_camion_aux);
                 }
                 else
                 {
                     //Actualizar
                     _camion_aux.IdCamion = int.Parse(Request.QueryString["Id"]);
-                    salida = BLL_Camiones.actualizar_Camion(_camion_aux);
+                    salida = client_WS.actualizar_Camion(_camion_aux);
                 }
 
                 //preparamos la salida para cachar un error y mostrar un Sweet Alert
