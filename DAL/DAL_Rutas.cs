@@ -50,7 +50,7 @@ namespace DAL
             List<Rutas_VO> list_rutas = new List<Rutas_VO>();
             try
             {
-                DataSet ds_camiones = metodos_Datos.execute_DataSet("sp_Rutas_Sel", parametros);
+                DataSet ds_camiones = metodos_Datos.execute_DataSet("sp_ListarRutas", parametros);
                 foreach (DataRow dr in ds_camiones.Tables[0].Rows)
                 {
                     list_rutas.Add(new Rutas_VO(dr));

@@ -5,7 +5,15 @@
         <div calss="row">
             <h3>Lista de Camiones</h3>
             <%--Botón de Agregar--%>
-            <asp:Button ID="Insertar" runat="server" Text="Agregar" CssClass="btn btn-primary btn-xs" Width="85px" OnClick="Insertar_Click" />
+            <p>
+                <i class="bi bi-x-diamond-fill"></i>
+                <asp:Button ID="Insertar" runat="server" Text="Agregar" CssClass="btn btn-primary btn-xs" Width="85px" OnClick="Insertar_Click" />
+            </p>
+            <a class="btn btn-primary btn-xs" href="/catalogos/Camiones/FormularioCamion.aspx">
+                <i class="bi bi-x-diamond-fill"></i>
+                Agregar
+
+            </a>
         </div>
 
         <div class="row">

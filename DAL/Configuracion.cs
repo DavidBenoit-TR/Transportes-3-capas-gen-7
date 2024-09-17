@@ -23,6 +23,17 @@ namespace DAL
                                           Initial Catalog = Transportes;
                                           Integrated Security = true;";
 
+        static string _cadenaConexion_LOCAL = @"Data Source = DESKTOP-C6HPFG2\SQLEXPRESS01;
+                                          Initial Catalog = Transportes;
+                                          Integrated Security = true;";
+        static string _cadenaConexion_TEST = @"Data Source = DESKTOP-C6HPFG2\SQLEXPRESS01;
+                                          Initial Catalog = Transportes;
+                                          Integrated Security = true;";
+        static string _cadenaConexion_PROD = @"Data Source = DESKTOP-C6HPFG2\SQLEXPRESS01;
+                                          Initial Catalog = Transportes;
+                                          Integrated Security = true;";
+
+
         public static string CadenaConexion //Encapsulamiento
         {
             get { return _cadenaConexion; }

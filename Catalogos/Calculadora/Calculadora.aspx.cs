@@ -16,6 +16,7 @@ namespace Transportes_3_capas_gen_7.Catalogos.Calculadora
         {
             //inicializo mi cliente SOAP
             Cliente_WS = new CalculadoraServiceSoapClient();
+
         }
 
         protected void btnSumar_Click(object sender, EventArgs e)

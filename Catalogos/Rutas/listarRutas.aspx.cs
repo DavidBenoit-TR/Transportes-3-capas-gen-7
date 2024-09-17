@@ -17,22 +17,28 @@ namespace Transportes_3_capas_gen_7.Catalogos.Rutas
             string session_user = (string)Session["user"];
             string session_rol = (string)Session["rol"];
 
-            //valido si no están vacías
-            if (session_user != null)
+            //puedo entrar
+            if (!IsPostBack)
             {
-                //puedo entrar
-                if (!IsPostBack)
-                {
-                    cargargrid();
-                }
+                cargargrid();
             }
-            else
-            {
-                //lo regreso al Login
-                //vaciar las variables de sesión por seguridad
-                Session.Clear();
-                sweetAlert.sweetAlert2("Alto ahí loca", "No has iniciado sesión", "info", this.Page, this.GetType(), "/Login");
-            }
+
+            ////valido si no están vacías
+            //if (session_user != null)
+            //{
+            //    //puedo entrar
+            //    if (!IsPostBack)
+            //    {
+            //        cargargrid();
+            //    }
+            //}
+            //else
+            //{
+            //    //lo regreso al Login
+            //    //vaciar las variables de sesión por seguridad
+            //    Session.Clear();
+            //    sweetAlert.sweetAlert2("Alto ahí loca", "No has iniciado sesión", "info", this.Page, this.GetType(), "/Login");
+            //}
         }
 
         private void cargargrid()

@@ -44,15 +44,18 @@ namespace VO
 
         public Rutas_VO(DataRow dr)
         {
-            idRuta = int.Parse(dr["idRuta"].ToString());
-            camionId = int.Parse(dr["camionId"].ToString());
-            distancia = double.Parse(dr["distancia"].ToString());
-            fechaSalida = DateTime.Parse(dr["fechaSalida"].ToString()).ToShortDateString();
-            fechaLlegadaEstimada = DateTime.Parse(dr["fechaLlegadaEstimada"].ToString()).ToShortDateString();
-            fechaLlegadaReal = DateTime.Parse(dr["fechaLlegadaReal"].ToString()).ToShortDateString();
-            choferId = int.Parse(dr["choferId"].ToString());
-            direccionOrigenId = int.Parse(dr["direccionOrigenId"].ToString());
-            direccionDestinoId = int.Parse(dr["direccionDestinoId"].ToString());
+            idRuta = int.Parse(dr["ID_Ruta"].ToString());
+            camionId = int.Parse(dr["Camion_ID"].ToString());
+            distancia = double.Parse(dr["Distancia"].ToString());
+            //1. Recupero la Fecha del DR => dr["Fecha_Salida"].ToString()
+            //2. Convierto la fecha a ujn DateTime => DateTime.Parse()
+            //3. Convierto nuevamente la fecha a un string con formato aaaa/MM/dd => .ToShortDateString()
+            fechaSalida = DateTime.Parse(dr["Fecha_Salida"].ToString()).ToShortDateString();
+            fechaLlegadaEstimada = DateTime.Parse(dr["Fecha_llegadaestimada"].ToString()).ToShortDateString();
+            fechaLlegadaReal = DateTime.Parse(dr["Fecha_llegadareal"].ToString()).ToShortDateString();
+            choferId = int.Parse(dr["Chofer_ID"].ToString());
+            direccionOrigenId = int.Parse(dr["Direccionorigen_ID"].ToString());
+            direccionDestinoId = int.Parse(dr["Direcciondestino_ID"].ToString());
         }
     }
 }

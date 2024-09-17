@@ -41,7 +41,7 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
                     //valido que realmente obtenga un objeto, de lo contrario me regreso al lsitado
                     if (_camion_original.IdCamion != 0)
                     {
-                        //queire decir que si recuperé el objeto y procedo a colocar los valores
+                        //quiere decir que si recuperé el objeto y procedo a colocar los valores
                         Titulo.Text = "Actualizar Camión";
                         Subtitulo.Text = $"Modificar los datos del Camión #{_id}";
                         txtmatricula.Text = _camion_original.Matricula;
@@ -55,7 +55,7 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
                     }
                     else
                     {
-                        //Voy pa' tras
+                        ////Voy pa' tras
                         //Response.Redirect("listarCamiones.aspx");
                         sweetAlert.Swert_Alert("No hay nada por aquí", "No hemos podido encontrar los que buscas", "info", this.Page, this.GetType(), "listarCamiones.aspx");
                     }

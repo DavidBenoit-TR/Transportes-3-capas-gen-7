@@ -19,73 +19,74 @@ namespace Transportes_3_capas_gen_7.Catalogos.Rutas
             //recupero las variables de sesión
             string session_user = (string)Session["user"];
             string session_rol = (string)Session["rol"];
-            if (session_user != null)
+            if (!IsPostBack)
             {
-                if (!IsPostBack)
+                //Cargo mis DDL's
+                cargar_DDL();
+                //Configuro mis Calendarios
+                calactual.SelectedDate = DateTime.Now.Date;
+                calactual.VisibleDate = DateTime.Now.Date;
+                lblactual.Text = "Fecah Actual: " + DateTime.Now.ToShortDateString();
+                //Valido si se desea Insertar o Actualizar
+                if (Request.QueryString["Id"] != null)
                 {
-                    //Cargo mis DDL's
-                    cargar_DDL();
-                    //Configuro mis Calendarios
-                    calactual.SelectedDate = DateTime.Now.Date;
-                    calactual.VisibleDate = DateTime.Now.Date;
-                    lblactual.Text = "Fecah Actual: " + DateTime.Now.ToShortDateString();
-                    //Valido si se desea Insertar o Actualizar
-                    if (Request.QueryString["Id"] != null)
+                    //Voy a Actualizar
+                    //recupero el ID de la URL
+                    int idruta = int.Parse(Request.QueryString["Id"].ToString());
+                    //recupero el objeto original
+                    Rutas_VO _ruta = BLL_Rutas.GetRutas("@idRuta", idruta)[0];
+                    //valido que realmente haya recuperado una ruta
+                    if (_ruta.IdRuta != 0)
                     {
-                        //Voy a Actualizar
-                        //recupero el ID de la URL
-                        int idruta = int.Parse(Request.QueryString["Id"].ToString());
-                        //recupero el objeto original
-                        Rutas_VO _ruta = BLL_Rutas.GetRutas("@idRuta", idruta)[0];
-                        //valido que realmente haya recuperado una ruta
-                        if (_ruta.IdRuta != 0)
-                        {
-                            //Relleno el formulario
-                            titulo.Text = "Actualizar Ruta";
-                            subtitulo.Text = "Ruta #" + idruta;
-                            ddlcamion.SelectedValue = _ruta.CamionId.ToString();
-                            ddlchoferes.SelectedValue = _ruta.ChoferId.ToString();
-                            ddlorigen.SelectedValue = _ruta.DireccionOrigenId.ToString();
-                            ddldestino.SelectedValue = _ruta.DireccionDestinoId.ToString();
-                            txtdistancia.Text = _ruta.Distancia.ToString();
+                        //Relleno el formulario
+                        titulo.Text = "Actualizar Ruta";
+                        subtitulo.Text = "Ruta #" + idruta;
+                        ddlcamion.SelectedValue = _ruta.CamionId.ToString();
+                        ddlchoferes.SelectedValue = _ruta.ChoferId.ToString();
+                        ddlorigen.SelectedValue = _ruta.DireccionOrigenId.ToString();
+                        ddldestino.SelectedValue = _ruta.DireccionDestinoId.ToString();
+                        txtdistancia.Text = _ruta.Distancia.ToString();
 
-                            calestimada.SelectedDate = DateTime.Parse(_ruta.FechaLlegadaEstimada);
-                            calestimada.VisibleDate = DateTime.Parse(_ruta.FechaLlegadaEstimada);
-                            lblestimada.Text = "Fecha estimada de LLegada: " + _ruta.FechaLlegadaEstimada;
+                        calestimada.SelectedDate = DateTime.Parse(_ruta.FechaLlegadaEstimada);
+                        calestimada.VisibleDate = DateTime.Parse(_ruta.FechaLlegadaEstimada);
+                        lblestimada.Text = "Fecha estimada de LLegada: " + _ruta.FechaLlegadaEstimada;
 
-                            calsalida.SelectedDate = DateTime.Parse(_ruta.FechaSalida);
-                            calsalida.VisibleDate = DateTime.Parse(_ruta.FechaSalida);
-                            lblsalida.Text = "Fecha estimada de Salida: " + _ruta.FechaSalida;
+                        calsalida.SelectedDate = DateTime.Parse(_ruta.FechaSalida);
+                        calsalida.VisibleDate = DateTime.Parse(_ruta.FechaSalida);
+                        lblsalida.Text = "Fecha estimada de Salida: " + _ruta.FechaSalida;
 
-                        }
-                        else
-                        {
-                            sweetAlert.Swert_Alert("Opción no válida", "No hemos encontrado el ID solicitado", "info", this.Page, this.GetType(), "/Catalogos/Rutas/ListarRutas.aspx");
-                        }
                     }
                     else
                     {
-                        //voy a aInsertar
-                        titulo.Text = "Agregar Nueva Ruta";
-                        subtitulo.Text = "";
-
-                        calestimada.SelectedDate = DateTime.Now.Date.AddDays(4);
-                        calestimada.VisibleDate = DateTime.Now.Date.AddDays(4);
-                        lblestimada.Text = "Fecha estimada de LLegada: " + DateTime.Now.Date.AddDays(4).ToShortDateString();
-
-                        calsalida.SelectedDate = DateTime.Now.Date.AddDays(1);
-                        calsalida.VisibleDate = DateTime.Now.Date.AddDays(1);
-                        lblsalida.Text = "Fecha de Salida: " + DateTime.Now.Date.AddDays(1).ToShortDateString();
+                        sweetAlert.Swert_Alert("Opción no válida", "No hemos encontrado el ID solicitado", "info", this.Page, this.GetType(), "/Catalogos/Rutas/ListarRutas.aspx");
                     }
                 }
+                else
+                {
+                    //voy a aInsertar
+                    titulo.Text = "Agregar Nueva Ruta";
+                    subtitulo.Text = "";
+
+                    calestimada.SelectedDate = DateTime.Now.Date.AddDays(4);
+                    calestimada.VisibleDate = DateTime.Now.Date.AddDays(4);
+                    lblestimada.Text = "Fecha estimada de LLegada: " + DateTime.Now.Date.AddDays(4).ToShortDateString();
+
+                    calsalida.SelectedDate = DateTime.Now.Date.AddDays(1);
+                    calsalida.VisibleDate = DateTime.Now.Date.AddDays(1);
+                    lblsalida.Text = "Fecha de Salida: " + DateTime.Now.Date.AddDays(1).ToShortDateString();
+                }
             }
-            else
-            {
-                //lo regreso al Login
-                //vaciar las variables de sesión por seguridad
-                Session.Clear();
-                sweetAlert.sweetAlert2("Alto ahí loca", "No has iniciado sesión", "info", this.Page, this.GetType(), "/Login");
-            }
+            //if (session_user != null)
+            //{
+
+            //}
+            //else
+            //{
+            //    //lo regreso al Login
+            //    //vaciar las variables de sesión por seguridad
+            //    Session.Clear();
+            //    sweetAlert.sweetAlert2("Alto ahí loca", "No has iniciado sesión", "info", this.Page, this.GetType(), "/Login");
+            //}
         }
 
         protected void cargar_DDL()

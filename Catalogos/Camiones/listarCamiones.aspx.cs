@@ -47,7 +47,6 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
                 sweetAlert.sweetAlert2("Alto ahí loca", "No has iniciado sesión", "info", this.Page, this.GetType(), "/Login");
             }
         }
-
         public void CargarGrid()
         {
             //cargamos la información desde la BLL al GV
@@ -61,19 +60,6 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
         {
             //Hago la redirección a mi formulario de crear un nuevo Camión
             Response.Redirect("FormularioCamion.aspx");
-        }
-        protected void GVCamiones_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //defino si el comando (el click que se detecta) tiene la propiedad "Select")
-            if (e.CommandName == "Select")
-            {
-                //recupero el índice en función de aquel elemento que haya detonado el evento
-                int varIndex = int.Parse(e.CommandArgument.ToString());
-                //recupero el ID en función del índice que recuperamos
-                string id = GVCamiones.DataKeys[varIndex].Values["IdCamion"].ToString();
-                //redirecciono al formulario de edición, pasando como parámetro el ID
-                Response.Redirect("FormularioCamion.aspx?Id=" + id);
-            }
         }
         protected void GVCamiones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -101,6 +87,19 @@ namespace Transportes_3_capas_gen_7.Catalagos.Camiones
             sweetAlert.Swert_Alert(titulo, msg, tipo, this.Page, this.GetType());
             //Recargamos el Grid
             CargarGrid();
+        }
+        protected void GVCamiones_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            //defino si el comando (el click que se detecta) tiene la propiedad "Select")
+            if (e.CommandName == "Select")
+            {
+                //recupero el índice en función de aquel elemento que haya detonado el evento
+                int varIndex = int.Parse(e.CommandArgument.ToString());
+                //recupero el ID en función del índice que recuperamos
+                string id = GVCamiones.DataKeys[varIndex].Values["IdCamion"].ToString();
+                //redirecciono al formulario de edición, pasando como parámetro el ID
+                Response.Redirect("FormularioCamion.aspx?Id=" + id);
+            }
         }
         protected void GVCamiones_RowEditing(object sender, GridViewEditEventArgs e)
         {
